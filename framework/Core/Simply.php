@@ -146,7 +146,7 @@ class Simply {
 	 */
 	public static function find_file($dir, $file, $ext = NULL, $array = FALSE)
 	{
-		return File::find_file($dir, $file, $ext, $array);
+		return File::find($dir, $file, $ext, $array);
 	}
 
 	/**
