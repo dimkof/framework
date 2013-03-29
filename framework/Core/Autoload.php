@@ -33,7 +33,7 @@ class Autoload {
 
 		$file .= str_replace('_', DIRECTORY_SEPARATOR, $class);
 
-		if ($path = self::find_file($file))
+		if ($path = self::find_class($file))
 		{
 			// Load the class file
 			require $path;
@@ -47,33 +47,15 @@ class Autoload {
 	}
 
 	/**
-	 * Find file
+	 * Find class
 	 *
-	 * @param string $file
-	 * @param string $ext
-	 *
+	 * @param string $file	 *
 	 * @return boolean|string filepath
 	 */
-	public static function find_file($file, $ext = NULL)
+	public static function find_class($class)
 	{
-		if ($ext === NULL)
-		{
-			// Use the default extension
-			$ext = EXT;
-		}
-		elseif ($ext)
-		{
-			// Prefix the extension with a period
-			$ext = ".{$ext}";
-		}
-		else
-		{
-			// Use no extension
-			$ext = '';
-		}
-
 		// Create a partial path of the filename
-		$path = $file.$ext;
+		$path = $class.EXT;
 
 		foreach(self::$_paths as $dir)
 		{
