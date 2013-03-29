@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
 /**
  * A port of [phputf8](http://phputf8.sourceforge.net/) to a unified set
@@ -1563,8 +1563,8 @@ class UTF8 {
 } // End UTF8
 
 
-if (Simply_UTF8::$server_utf8 === NULL)
+if (\Helpers\UTF8::$server_utf8 === NULL)
 {
 	// Determine if this server supports UTF-8 natively
-	Simply_UTF8::$server_utf8 = extension_loaded('mbstring');
+	\Helpers\UTF8::$server_utf8 = extension_loaded('mbstring');
 }
