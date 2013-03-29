@@ -146,7 +146,7 @@ class Simply {
 	 */
 	public static function find_file($dir, $file, $ext = NULL, $array = FALSE)
 	{
-		return Autoload::find_file($dir, $file, $ext, $array);
+		return File::find_file($dir, $file, $ext, $array);
 	}
 
 	/**
@@ -180,6 +180,21 @@ class Simply {
 	 */
 	public static function message()
 	{
+
+	}
+
+	/**
+	 * Add new path for search files
+	 *
+	 * @param string $path
+	 * @param boolean $before  if TRUE - will add at the beginning of the array
+	 */
+	public static function set_path($path, $before = TRUE)
+	{
+		if ( ! is_array($path) )
+		{
+			self::registry('paths')->set($path);
+		}
 
 	}
 
