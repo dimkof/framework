@@ -43,16 +43,6 @@ setlocale(LC_ALL, 'ru_RU.utf-8');
 define('SYSPATH', realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR);
 require_once(SYSPATH.'Core/Simply'.EXT);
 
-/*
- * Enable Simply Framework auto-loader
- * @link http://www.php.net/manual/function.spl-autoload-register
- */
-spl_autoload_register(array('\Core\Simply', 'auto_load'));
+\Core\Simply::init();
 
-/*
- * Enable Simply Framework auto-loader for unserialization.
- *
- * @link http://www.php.net/manual/function.spl-autoload-call
- * @link http://www.php.net/manual/var.configuration#unserialize-callback-func
- */
-ini_set('unserialize_callback_func', 'spl_autoload_call');
+// End bootstrap
