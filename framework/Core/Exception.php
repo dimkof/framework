@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Exception {
+class Exception extends \Exception {
 
 	public static function exception_handler()
 	{
