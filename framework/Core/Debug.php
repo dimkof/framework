@@ -31,11 +31,15 @@ class Debug {
 	}
 
 
-	public static function time($start_time = NULL, $round = TRUE, $suffix = ' sec')
+	public static function time($start_time = NULL, $format = 'ms', $round = TRUE)
 	{
 		$start_time = ($start_time) ? $start_time : self::$_start_time;
 
-		if ($round)
+		if ($round AND $format == 'ms')
+		{
+			$time = round((microtime(TRUE) - $start_time)*1000, 2);
+		}
+		elseif ($round AND $format == 'sec')
 		{
 			$time = round((microtime(TRUE) - $start_time), 3);
 		}
@@ -44,7 +48,7 @@ class Debug {
 			$time = microtime(TRUE) - $start_time;
 		}
 
-		return $time.$suffix;
+		return $time.' '.$format;
 	}
 
 
