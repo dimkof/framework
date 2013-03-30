@@ -43,6 +43,26 @@ class Simply {
 	 */
 	public static function init()
 	{
+		/**
+		 * Set autoload
+		 */
+		require_once(SYSPATH.'Core/Autoload'.EXT);
+
+		/*
+		 * Enable Simply Framework auto-loader
+		 * @link http://www.php.net/manual/function.spl-autoload-register
+		 */
+		spl_autoload_register(array('\Core\Simply', 'auto_load'));
+
+		/*
+		 * Enable Simply Framework auto-loader for unserialization.
+		 *
+		 * @link http://www.php.net/manual/function.spl-autoload-call
+		 * @link http://www.php.net/manual/var.configuration#unserialize-callback-func
+		 */
+		ini_set('unserialize_callback_func', 'spl_autoload_call');
+
+
 		// Enable the Simply exception handling, adds stack traces and error source.
 		// set_exception_handler(array('Exception', 'exception_handler'));
 
@@ -122,9 +142,9 @@ class Simply {
 	 *
 	 * @return class instance
 	 */
-	public static function cookie()
+	public static function cookie($driver = 'session')
 	{
-
+		return Cookie::instance($driver);
 	}
 
 	/**
@@ -276,9 +296,3 @@ class Simply {
 		return 'Simply Framework '.self::VERSION.' ('.self::CODENAME.')';
 	}
 }
-
-
-/**
- * Set autoload
- */
-require_once(SYSPATH.'Core/Autoload'.EXT);
