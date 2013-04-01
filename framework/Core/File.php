@@ -73,4 +73,17 @@ class File {
 
 		return $found;
 	}
+
+	/**
+	 * Loads a file within a totally empty scope and returns the output:
+	 *
+	 *     $foo = File::load('foo.php');
+	 *
+	 * @param   string  $file
+	 * @return  mixed
+	 */
+	public static function load($file)
+	{
+		return include $file;
+	}
 }
