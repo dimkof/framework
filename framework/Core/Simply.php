@@ -64,13 +64,13 @@ class Simply {
 
 
 		// Enable the Simply exception handling, adds stack traces and error source.
-		// set_exception_handler(array('Exception', 'exception_handler'));
+		set_exception_handler(array('\\Core\\Exception', 'exception_handler'));
 
 		// Enable the Simply error handling, converts all PHP errors to exceptions.
-		// set_error_handler(array('Exception', 'error_handler'));
+		set_error_handler(array('\\Core\\Exception', 'error_handler'));
 
 		// Enable the Simply shutdown handler, which catches E_FATAL errors.
-		// register_shutdown_function(array('Exception', 'shutdown_handler'));
+		register_shutdown_function(array('\\Core\\Exception', 'shutdown_handler'));
 
 		if (ini_get('register_globals'))
 		{
@@ -167,6 +167,19 @@ class Simply {
 	public static function find_file($dir, $file, $ext = NULL, $array = FALSE)
 	{
 		return File::find($dir, $file, $ext, $array);
+	}
+
+	/**
+	 * Loads a file within a totally empty scope and returns the output:
+	 *
+	 *     $foo = Simply::load('foo.php');
+	 *
+	 * @param   string  $file
+	 * @return  mixed
+	 */
+	public static function load($file)
+	{
+		return File::load($file);
 	}
 
 	/**
