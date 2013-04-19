@@ -13,8 +13,8 @@ class Test {
 
 		try
 		{
+			echo $data.'<br>';
 			throw new \Core\Exception();
-			echo $wdata.'<br>';
 		}
 		catch (\Core\Exception $e)
 		{

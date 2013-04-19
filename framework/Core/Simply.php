@@ -64,13 +64,13 @@ class Simply {
 
 
 		// Enable the Simply exception handling, adds stack traces and error source.
-		set_exception_handler(array('\\Core\\Exception', 'exception_handler'));
+		// set_exception_handler(array('\\Core\\Exception', 'exception_handler'));
 
 		// Enable the Simply error handling, converts all PHP errors to exceptions.
-		set_error_handler(array('\\Core\\Exception', 'error_handler'));
+		// set_error_handler(array('\\Core\\Exception', 'error_handler'));
 
 		// Enable the Simply shutdown handler, which catches E_FATAL errors.
-		register_shutdown_function(array('\\Core\\Exception', 'shutdown_handler'));
+		// register_shutdown_function(array('\\Core\\Exception', 'shutdown_handler'));
 
 		if (ini_get('register_globals'))
 		{
